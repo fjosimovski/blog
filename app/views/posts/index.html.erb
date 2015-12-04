@@ -1,11 +1,11 @@
-<div>
+<div class="col-md-8">
   <h1>Enjoy our blog posts</h1>
 
   <% if flash[:notice] %>
     <div class="alert-success"><%= flash[:notice] %></div>
   <% end %>
 
-  <% @posts.each do |post| %>
+  <% @posts.where(featured: false).each do |post| %>
     <div class="panel panel-primary">
       <div class="panel-heading"><%= post.title %></div>
       <div class="panel-body">
@@ -17,5 +17,20 @@
     </div>
   <% end %>
 
+</div>
+
+<div class="col-md-4">
+  <h1>Featured post</h1>
+  <% @posts.where(featured: true).each do |post| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= post.title %></div>
+      <div class="panel-body">
+        <%= post.description %>
+      </div>
+      <div class="panel-footer text-right">
+        <span> Created by: <%= post.username %></span>
+      </div>
+    </div>
+  <% end %>
 </div>
 

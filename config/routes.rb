@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   post "login_user", :to => "sessions#login_user"
   get "logout", :to => "sessions#logout"
 
+  namespace :api do
+    namespace :v1 do
+      get 'posts', to: 'posts#index'
+      get 'post/:id', to: 'posts#show'
+    end
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

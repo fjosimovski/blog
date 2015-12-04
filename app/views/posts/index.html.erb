@@ -1,0 +1,17 @@
+<div>
+  <h1>Enjoy our blog posts</h1>
+
+  <% @posts.each do |post| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><%= post.title %></div>
+      <div class="panel-body">
+        <%= post.description %>
+      </div>
+      <div class="panel-footer text-right">
+        <span> Created by: <%= post.username %></span>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+

@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(posts_params)
+    @post.username = @current_user.name
     respond_to do |format|
       if @post.save
         format.html  { redirect_to(root_path,

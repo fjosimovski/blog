@@ -1,6 +1,10 @@
 <div>
   <h1>Enjoy our blog posts</h1>
 
+  <% if flash[:notice] %>
+    <div class="alert-success"><%= flash[:notice] %></div>
+  <% end %>
+
   <% @posts.each do |post| %>
     <div class="panel panel-primary">
       <div class="panel-heading"><%= post.title %></div>

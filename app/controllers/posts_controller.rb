@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user, :only => [:new]
+  before_filter :check_for_user
+
   def index
     @posts = Post.all.order(created_at: :desc)
     respond_to do |format|

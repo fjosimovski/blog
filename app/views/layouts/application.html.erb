@@ -14,7 +14,13 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Add new post", new_post_path %></li>
-            <li><%= link_to "Sign up", new_user_path %></li>
+            <% if @current_user %>
+              <li><%= link_to @current_user.name, '#'  %></li>
+              <li><%= link_to "Log out", logout_path  %></li>
+            <% else %>
+              <li><%= link_to "Sign up", new_user_path %></li>
+              <li><%= link_to "Sign in", login_path %></li>
+            <% end %>
           </ul>
         </nav>
       </div>

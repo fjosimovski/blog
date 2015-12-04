@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+
   get 'users/new'
 
   get 'users/create'
@@ -12,6 +14,10 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts
   resources :users
+  get "login", :to => "sessions#login"
+  post "login_user", :to => "sessions#login_user"
+  get "logout", :to => "sessions#logout"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

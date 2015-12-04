@@ -1,0 +1,18 @@
+<%= form_tag(:action => 'login_user') do %>
+  <% if flash[:notice] %>
+    <div class="alert-danger"><%= flash[:notice] %></div>
+  <% end %>
+
+  <div class="form-group">
+    Email
+    <%= text_field_tag(:email, '', class: 'form-control')%>
+  </div>
+  <div class="form-group">
+    Password
+    <%= password_field_tag(:password, '', class: 'form-control')%>
+  </div>
+  <div class="actions">
+     <%= submit_tag("Log In", class: 'btn btn-primary') %> or   
+     <%= link_to("Sign Up", new_user_path, class: 'btn btn-sm btn-warning') %>
+  </div>
+<% end %>

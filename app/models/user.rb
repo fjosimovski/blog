@@ -14,4 +14,16 @@ class User < ActiveRecord::Base
       self.password = Digest::SHA1.hexdigest(password)
     end
   end
+
+  def self.authenticate(email="", password="")
+    user = User.find_by_email(email)
+    if user && user.check_password(password)
+      return user
+    else
+      return false
+    end
+  end
+  def check_password(password="")
+    Digest::SHA1.hexdigest(password)
+  end
 end
